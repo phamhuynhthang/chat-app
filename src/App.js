@@ -1,11 +1,24 @@
-
-import './App.css';
-
+import Login from "./Components/Login";
+import { Route, Switch, BrowserRouter} from 'react-router-dom'
+import ChatRoom from "./Components/ChatRoom";
+import AuthProvider from "./Components/Context/AuthProvider";
+import AppProvider from "./Components/Context/AppProvider";
+import AddRoomModal from "./Components/Modals/AddRoomModal";
+import InviteMemberModal from "./Components/Modals/InviteMemberModals";
 function App() {
   return (
-    <>
-      <h1>Thắng</h1>
-    </>
+      <BrowserRouter>
+      <AuthProvider>
+        <AppProvider>
+          <Switch>
+            <Route component={Login} path='/login' />
+            <Route component={ChatRoom} path='/' />
+          </Switch>
+          <AddRoomModal/>
+          <InviteMemberModal/>
+          </AppProvider>
+        </AuthProvider>
+      </BrowserRouter>
   );
 }
 
